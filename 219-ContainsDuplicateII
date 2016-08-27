@@ -1,0 +1,20 @@
+class Solution {
+public:
+    bool containsNearbyDuplicate(vector<int>& nums, int k) {
+        if(nums.size() <= 1 || k < 0) return false;
+        multimap<int,int> hash;
+        //insert vector into multimap, vector's value is the key of map.
+        //vector's index is the value of map.
+        //find the result in the inserting process.
+        for (int i = 0; i < nums.size(); i++){
+            hash.insert(std::pair<int,int>(nums[i],i));
+            
+            //FIND function would indicate the first index.
+            if(hash.count(nums[i])>1 && hash.find(nums[i])->second + k >= i) return true;
+            //In case that {2,x,x,2,x,x,x,x,x,2} more than 2 times, delete the first 2 if searched.
+            else if(hash.count(nums[i]>1) && hash.find(nums[i])->second + k < i ) hash.erase(hash.find(nums[i])); 
+            else continue;
+        }
+        return false;
+    }
+};
