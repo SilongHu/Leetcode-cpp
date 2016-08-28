@@ -1,0 +1,22 @@
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        int lengthOfR = ransomNote.length();
+        int lengthOfM = magazine.length();
+        if (lengthOfR > lengthOfM) return false;
+        vector<int> ransom(26);
+        vector<int> maga(26);
+        for(int i = 0; i<lengthOfR;i++){
+            ransom[ransomNote[i]-'a']++;
+        }
+        
+        for(int i = 0; i<lengthOfM;i++){
+            maga[magazine[i]-'a']++;
+        }
+        
+        for(int i = 0; i < 26; i++){
+            if(ransom[i]>maga[i]) return false;
+        }
+        return true;
+    }
+};
