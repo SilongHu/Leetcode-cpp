@@ -13,7 +13,6 @@ public:
             nums.erase(nums.begin()+s);
             p++;
         }
-        
         nums.insert(nums.begin(),store.begin(),store.end());
     }
 };
