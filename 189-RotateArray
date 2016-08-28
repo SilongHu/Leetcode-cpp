@@ -1,0 +1,19 @@
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+        int len = nums.size();
+        while(k >= len) k -= len;
+        if (k==0) nums = nums;
+        
+        vector<int> store;
+        int p = len - k, s = p;
+        //copy and delete the elements in NUMS from p to end.
+        while(p<len){
+            store.push_back(nums[s]);
+            nums.erase(nums.begin()+s);
+            p++;
+        }
+        
+        nums.insert(nums.begin(),store.begin(),store.end());
+    }
+};
