@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int lengthOfLastWord(string s) {
+        
+        if(s.length()==0) return 0;
+        
+        std::size_t found = s.find_last_of(" ");
+        int len = 0,flag = 0;
+        int before = found;
+        if(isalnum(s[found+1])){
+            while(s[++found]) len++;
+        }
+        else{
+            while(!isalnum(s[before-1])) before--;
+            if (before<=0) return 0;
+            flag = 1;
+        }
+        if(flag==1){
+        std::size_t found1 = s.find_last_of(" ",before-1);
+        len = before - found1- 1; 
+        }
+        return len;
+    }
+};
