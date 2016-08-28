@@ -1,0 +1,22 @@
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        if(s.length()<=1) return true;
+
+        //just lower all the alphabet
+        for(int i = 0; s[i]; i++){
+        s[i] = tolower(s[i]);
+        }
+        //(str[i])
+        int left = 0 , right = s.length()-1;
+        while(left<right){
+            if (!isalnum(s[left])) left++;
+            if (!isalnum(s[right])) right--;
+            if (isalnum(s[left]) && isalnum(s[right])){
+                if (s[left] == s[right]){left++;right--;}
+                else return false;
+            }
+        }
+        return true;
+    }
+};
