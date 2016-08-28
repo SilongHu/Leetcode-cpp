@@ -1,0 +1,20 @@
+class Solution {
+public:
+    string reverseVowels(string s) {
+        if (s.length()==0) return s;
+        int i=0,j=s.length()-1;
+        int index1=-1,index2 = -1;
+        while(i<=j){
+            if(s[i]=='a'||s[i]=='e'||s[i]=='i'||s[i]=='o'||s[i]=='u'||s[i]=='A'||s[i]=='E'||s[i]=='I'||s[i]=='O'||s[i]=='U') index1 = i;
+            else {i++;index1 = -1;}
+            
+            if(s[j]=='a'||s[j]=='e'||s[j]=='i'||s[j]=='o'||s[j]=='u'||s[j]=='A'||s[j]=='E'||s[j]=='I'||s[j]=='O'||s[j]=='U') index2 = j;
+            else {j--;index2 = -1;}
+            
+            if(index1 >=0 && index2 >=0 ){swap(s[index1],s[index2]);i++;j--;}
+            
+        }
+
+        return s;
+    }
+};
