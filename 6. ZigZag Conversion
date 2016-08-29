@@ -1,0 +1,87 @@
+class Solution {
+public:
+    string convert(string s, int numRows) {
+        if(s.length() <= numRows|| numRows == 1) return s;
+        int len = s.length(),flag,count1,count2,index,line;
+        int middle = numRows - 2;
+        index = 0,flag = 0,line = 0;
+        vector< vector<char> > all;
+        while(index<len){
+            count1 = 0;
+            count2 = 0;
+            vector<char> part;
+            if(flag == 0){
+                while(count1++ < numRows){
+                    part.push_back(s[index++]);
+                    //cout<<index<<endl;
+                }
+                flag = 1;
+                all.push_back(part);
+                line++;
+            }
+            else{
+                part.push_back(' ');
+                index += middle - 1; 
+                while(count2++ < middle){
+                    part.push_back(s[index--]);
+                }
+                flag = 0;
+                part.push_back(' ');
+                all.push_back(part);
+                index = index + middle + 1 ;
+                line++;
+            }
+        }
+        string result;
+ /*       int a  =  index - len;
+        if (a>0){
+            for (int i = numRows - a; i < numRows; i++){
+                all[line-1][i] = ' ';
+            }
+        }
+        
+
+        for(int j = 0; j < numRows;j++){
+            if(!isalpha(all[line-1][j])) all[line-1][j] = ' ';
+        }*/
+
+        for(int i = 0 ; i < line; i++){
+            for(int j = 0; j < numRows;j++){
+                //cout<<i<<"  "<<j<<"  "<<all[i][j]<<endl;
+                if(!isalpha(all[i][j])) all[i][j] = ' ';
+            }
+        }
+/*
+        int a  =  index - len;
+        if (a>0){
+            for (int i = numRows - a; i < numRows; i++){
+                all[line-1][i] = ' ';
+            }
+        }
+        
+*/
+        for(int j = 0; j < numRows;j++){
+            if(!isalpha(all[line-1][j])) all[line-1][j] = ' ';
+        }
+//cout<<"line: "<<line<<endl;
+//cout<<"rows: "<<numRows<<endl;
+/*
+        for(int i = 0 ; i < line; i++){
+            for(int j = 0; j < numRows;j++){
+                cout<<i<<"  "<<j<<"  "<<all[i][j]<<endl;
+                //if(!isalpha(all[i][j])) all[i][j] = ' ';
+            }
+        }
+  */  
+        for(int i = 0; i < numRows ; i++){
+            int k = 0;
+            while(k < line){
+                result.push_back(all[k++][i]);
+            }
+        }
+        string::iterator end_pos = std::remove(result.begin(), result.end(), ' ');
+        result.erase(end_pos, result.end());
+        return result;
+
+    }
+};
