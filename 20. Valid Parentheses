@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool isValid(string s) {
+        if (s.length() % 2 == 1) return false;
+        vector<int> sign;
+        for(int i = 0 ; i < s.length(); i++){
+            if( s[i] == '(' ) sign.push_back(1);
+            else if(s[i] == '[') sign.push_back(2);
+            else if(s[i] == '{') sign.push_back(3);
+            else if(s[i] == ')') {
+                if (sign.size()==0 || sign.back() != 1) return false;
+                sign.pop_back();
+            }
+            else if(s[i] == ']') {
+                if (sign.size()==0 || sign.back() != 2) return false;
+                sign.pop_back();
+            }
+            else if(s[i] == '}') {
+                if (sign.size()==0 || sign.back() != 3) return false;
+                sign.pop_back();
+            }
+            else return false;
+        }
+        if(sign.size() > 0) return false;
+        return true;
+
+    }
+};
