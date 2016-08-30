@@ -1,0 +1,17 @@
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        int slen = s.length();
+        int tlen = t.length();
+        if(slen + tlen == 0) return true;
+        if(slen == 0 || tlen == 0 || slen != tlen) return false;
+        sort(s.begin(),s.end());
+        sort(t.begin(),t.end());
+        int i = 0;
+        while( i < slen){
+            if(s[i]!=t[i]) return false;
+            else i++;
+        }
+        return true;
+    }
+};
