@@ -1,0 +1,13 @@
+class Solution {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        vector<int> intersection;
+        if(nums1.size()==0 || nums2.size() == 0) return intersection;
+        vector<int>::iterator k;
+        for(int i = 0;i < nums1.size();i++){
+            k = find(nums2.begin(),nums2.end(),nums1[i]);
+            if (k!=nums2.end() && find(intersection.begin(),intersection.end(),nums1[i])==intersection.end()) intersection.push_back(nums1[i]); 
+        }
+        return intersection;
+    }
+};
