@@ -1,0 +1,11 @@
+class Solution {
+public:
+    int addDigits(int num) {
+        if (num<10) return num;
+        int a = num%10;
+        int b = num/10;
+        int final = a+b;
+        if(final > 9) final = addDigits(final);
+        return final;
+    }
+};
