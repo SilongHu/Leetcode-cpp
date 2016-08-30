@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int trailingZeroes(int n) {
+        if(n < 5 || n > INT_MAX) return 0;
+        int result,count,final;
+        count = 0,result = 1;
+        result = n;
+        while(result > 0){
+            result /= 5;
+            count++;
+        }
+        final = 0;
+        while(count > 0){
+            final += (n/pow(5,count));
+            //result /= 5;
+            count--;
+        }
+
+        return final;
+    }
+};
