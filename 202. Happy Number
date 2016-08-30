@@ -1,0 +1,23 @@
+class Solution {
+public:
+    bool isHappy(int n) {
+        if(n <= 0) return false;
+        while(n > 10){
+        n = divide(n);
+        }
+        return (n == 1||n==7||n==10);
+    }
+    int divide(int n){
+        int a,result;
+        result = 0;
+        while(n != 0 ){
+        a = n % 10;
+        result += a*a;
+        n = n / 10;
+        }
+        if(n == 10){
+            result++;
+        }
+        return result;
+    }
+};
