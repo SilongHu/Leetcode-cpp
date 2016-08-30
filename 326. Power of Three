@@ -1,0 +1,13 @@
+class Solution {
+public:
+    bool isPowerOfThree(int n) {
+        int compare = 1;
+        int i = 0;
+        if (n >= INT_MAX) return false;
+        while(compare < n && i < 19){
+            compare = compare * 3;
+            i++;
+        }
+        return (compare == n)?true:false;
+    }
+};
