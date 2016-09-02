@@ -1,0 +1,105 @@
+class Solution {
+public:
+    string addBinary(string a, string b) {
+        if(a.length() == 0 || b.length() == 0) return (a.length()==0)?b:a;
+        int a_len = a.length(), b_len = b.length();
+        string result;
+        if(a_len >= b_len){
+            char carry='0';
+            int i = b_len-1, c = a_len-1;
+            while(i >= 0){
+                if(a[c]+ b[i]+ carry == 144){
+                    result+="0";
+                    carry = '0';
+                    i--;
+                    c--;
+                }
+                else if(a[c]+b[i]+carry == 145){
+                    result+="1";carry = '0';i--;c--;
+                }
+                else if (a[c]+b[i]+carry == 146){
+                    if(carry = '0'){
+                        result +='0';
+                        carry = '1';
+                        i--;c--;
+                    }
+                    else{
+                    result+="0";
+                    carry = '0';
+                    i--;c--;  
+                    }   
+                }
+                else{
+                    result+="1";carry='1';i--;c--;
+                }
+            }
+            if(c<0){
+                if (carry == '1') result +="1";
+                reverse(result.begin(),result.end());
+            return result;
+            }
+            for(int k = c; k >= 0 ; k--){
+
+                if(carry + a[k] == 98){
+                    result+= "0";
+                    carry = '1';
+                }
+                else if(carry + a[k] == 97){
+                    result +="1";
+                    carry = '0';
+                }
+                else {result+= "0";carry = '0' ;}
+            }
+            if(carry == '1') result +="1";
+        }
+        else{
+            char carry = '0';
+            int i = a_len-1, c = b_len-1;
+            while(i >= 0){
+                //first condition
+                if(a[i]+b[c]+carry == 144){
+                    result+="0";
+                    carry = '0';
+                    i--;
+                    c--;
+                }
+                else if(a[i]+b[c]+carry == 145){
+                        result +='1';
+                        carry = '0';
+                        i--;c--;
+                }
+                else if(a[i]+b[c]+carry == 146){
+                    if(carry = '0'){
+                        result +='0';
+                        carry = '1';
+                        i--;c--;
+                    }
+                    else{
+                    result+="0";
+                    carry = '0';
+                    i--;c--;  
+                    }  
+                    
+                }
+                else{
+                    result+="1";
+                    carry = '1';
+                    i--;c--;
+                }
+            }
+            for(int k = c; k >= 0 ; k--){
+                if(carry + b[k] == 98){
+                    result+="0";
+                    carry = '1';
+                }
+                else if(carry + b[k] == 97){
+                    result +="1";carry = '0';
+                    }
+                else {result+="0";carry='0';}
+            }
+            if(carry == '1') result +="1";
+        }
+        reverse(result.begin(),result.end());
+        return result;
+    }
+};
