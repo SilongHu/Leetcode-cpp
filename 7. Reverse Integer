@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int reverse(int x) {
+        if(x<10 && x>-10) return x;
+        if(x >= INT_MAX || x <= INT_MIN) return 0;
+        int i = 0,k=0,result=0;
+        vector<int> digit;
+        int sign = (x>0)?1:-1;
+        x = abs(x);
+        while(x > 0){
+            digit.push_back(x % 10);
+            i++;
+            x = x / 10;
+        }
+        int ii = digit.size();
+        if(i >= 10 && digit[0]>2) return 0;
+        while(k<ii){
+        result += digit[k]*pow(10,(i-1));
+        if(result >= INT_MAX || result<=INT_MIN) {return 0;}
+        i--;k++;
+        }
+        return result*sign;
+    }
+};
