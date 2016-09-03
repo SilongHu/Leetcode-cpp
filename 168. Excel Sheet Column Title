@@ -1,0 +1,29 @@
+class Solution {
+public:
+    string convertToTitle(int n) {
+        int copy = n, expo = 0;
+        string result="";
+        while(copy > 0){
+            if(copy/26 == 27 && copy %26 == 0) expo--; 
+            if(copy%26 == 0 && copy<=26) copy %= 26;
+            else copy /= 26;
+            cout<<"copy: "<<copy<<endl;
+            expo++;
+        }
+        cout<<"expo: "<<expo<<endl;
+        char c;
+        for(int i = expo-1; i >= 0;i--){
+            int a = pow(26,i);
+            if (n%a >= a/26 || a == 1){
+                c = n/a + 64;
+                n -= (n/a)*a;
+            }
+            else{
+                c = (n/a - 1) + 64;
+                n -= (n/a-1)*a;
+            }
+            result += c;
+        }
+        return result;
+    }
+};
