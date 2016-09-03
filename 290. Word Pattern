@@ -1,0 +1,41 @@
+class Solution {
+public:
+    bool wordPattern(string pattern, string str) {
+       if(pattern.length()==str.length()) return false; 
+       if(pattern.length() == 1 && str.find(' ')==std::string::npos) return true;
+       if(str.find(' ')==std::string::npos) return false;
+
+       vector<string> part = split(str,' ');
+       if(pattern.length() != part.size()) return false;
+       vector<string> already;
+       unordered_map<char,string> hash;
+       for(int i = 0; i < pattern.length();i++){
+            unordered_map<char,string>::const_iterator got = hash.find (pattern[i]);
+            if(got != hash.end()){
+                if(part[i] != got->second) return false;
+                already.push_back(part[i]);
+            }
+            else{
+                vector<string>::iterator it;
+                it = find(already.begin(), already.end(), part[i]);
+                if (it!=already.end()) return false;
+                hash[pattern[i]] = part[i];
+                already.push_back(part[i]);
+            }
+       }
+       return true;
+    }
+    void split(const string &s, char delim, vector<string> &elems) {
+        stringstream ss;
+        ss.str(s);
+        string item;
+        while (getline(ss, item, delim)) {
+            elems.push_back(item);
+            }
+        }
+    vector<string> split(const string &s, char delim) {
+        vector<string> elems;
+        split(s, delim, elems);
+        return elems;
+        }
+};
