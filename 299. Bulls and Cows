@@ -1,0 +1,26 @@
+class Solution {
+public:
+    string getHint(string secret, string guess) {
+        multiset<char> se_hash;
+        multiset<char> gu_hash;
+        int cows = 0, bulls = 0;
+        string result;
+        for(int i = 0; i < secret.length() ; i++){
+            if(secret[i] == guess[i]) bulls++;
+            else{
+                se_hash.insert(secret[i]);
+                gu_hash.insert(guess[i]);
+            }
+        }
+        auto it = gu_hash.begin();
+        while(!gu_hash.empty()){
+            cows += min(gu_hash.count(*it),se_hash.count(*it));
+            gu_hash.erase(*it);
+            it++;
+        }
+        result.append(to_string(bulls));
+        result += "A";result.append(to_string(cows));
+        result +="B";
+        return result;
+    }
+};
