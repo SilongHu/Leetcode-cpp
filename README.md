@@ -4,4 +4,5 @@ Record the growth of coding
 #Extremely slow: 7
 #Extremely good: 9
 #Code Need trim: 67
+#Hint Helping: 204
 #BUG: 6
