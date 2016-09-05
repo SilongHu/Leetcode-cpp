@@ -4,6 +4,6 @@ Record the growth of coding
 #Extremely slow: 7
 #Extremely good: 9,223
 #Code Need trim: 67
-#Hint Helping: 204
+#Hint Helping: 204,303
 #BUG: 6
 #No Runtime Record: 389
