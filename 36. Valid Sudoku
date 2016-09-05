@@ -1,0 +1,38 @@
+class Solution {
+public:
+    bool isValidSudoku(vector<vector<char>>& board) {
+        vector<vector<char>> column;
+        string a,b,c,d,e,f,g,h,l;
+        for(int i = 0; i< 9; i++){
+            vector<char> element;
+            for(int j = 0; j< 9;j++){
+                if(isalnum(board[i][j])){
+                    if(count(board[i].begin(),board[i].end(),board[i][j])>1) return false;
+                }
+                element.push_back(board[j][i]);
+                if(i<=2 && j<=2) a+=board[i][j];
+                else if(i<=2 && j>2 && j<=5) b+=board[i][j];
+                else if(i<=2 && j>5 && j<=8) c+=board[i][j];
+                else if(i>2 && i<=5 && j<=2) d+=board[i][j];
+                else if(i<=5 && i>2 && j>2 && j<=5) e+=board[i][j];
+                else if(i<=5 && i>2 && j<=8 && j>5) f+=board[i][j];
+                else if(i>5 && i<=8 && j<=2) g+=board[i][j];
+                else if(i<=8 && i>5 && j>2 && j<=5) h+=board[i][j];
+                else if(i<=8 && i>5 && j<=8 && j>5) l+=board[i][j];
+            }
+            column.push_back(element);
+        }
+        string nine[] = {a,b,c,d,e,f,g,h,l};
+        for(int i = 0;i < 9;i++){
+            for(int k = 0; k< 9;k++){
+                if(isalnum(column[i][k])){
+                    if(count(column[i].begin(),column[i].end(),column[i][k])>1) return false;
+                }
+                if(isalnum(nine[i][k])){
+                     if(count(nine[i].begin(), nine[i].end(), nine[i][k])>1) return false;
+                }
+            }
+        }
+        return true;
+    }
+};
