@@ -1,0 +1,21 @@
+class Solution {
+public:
+    bool isIsomorphic(string s, string t) {
+        if(s.length()!=t.length()) return false;
+        if(s.length() < 2) return true;
+        unordered_map<char,char> hash;
+        for(int i = 0; i < s.length() ; i++){
+            if(hash.count(s[i])>0 && t[i] != hash[s[i]]) return false;
+            else if(hash.count(s[i])==0 && hash.count(t[i])>0 && t[i]==hash[t[i]]) return false;
+            else hash[s[i]]=t[i];
+        }
+        
+        unordered_map<char,char> hash_again;
+        for(int i = 0; i < t.length() ; i++){
+            if(hash_again.count(t[i])>0 && s[i] != hash_again[t[i]]) return false;
+            else if(hash_again.count(t[i])==0 && hash_again.count(s[i])>0 && s[i]==hash_again[s[i]]) return false;
+            else hash_again[t[i]]=s[i];
+        }
+        return true;
+    }
+};
