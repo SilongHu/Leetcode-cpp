@@ -7,4 +7,4 @@ Record the growth of coding
 #Code Need trim: 67
 #Hint Helping: 204,303,198
 #BUG: 6
-#No Runtime Record: 389
+#No Runtime Record: 389,20
