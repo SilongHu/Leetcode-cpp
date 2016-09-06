@@ -24,3 +24,26 @@ public:
         return prefix;
     }
 };
+
+
+Version 2:
+
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        if(strs.size() == 0) return "";
+        if(strs.size() == 1) return strs[0];
+        int len = strs.size(),mark=0;
+        while(mark < strs[0].length()){
+            vector<char> store;
+            for(int i = 0; i < len; i++){
+                store.push_back(strs[i][mark]);
+                }
+            if (count(store.begin(),store.end(),strs[0][mark]) != len ) break;
+                mark++;
+        }
+        string prefix;
+        prefix.append(strs[0],0,mark);
+        return prefix;
+    }
+};
