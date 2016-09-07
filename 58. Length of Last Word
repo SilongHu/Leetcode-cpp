@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int lengthOfLastWord(string s) {
+        int ret = 0;
+        s = stripSpace(s);
+        int i = s.size();
+        while (i > 0)
+        {
+            if (s[--i] != ' ') ret ++;
+            else break;
+        }
+        return ret;
+    } 
+    string stripSpace(string s) {
+        int i = s.size() - 1;
+        while (i >= 0 && s[i] == ' ') i --;
+        return s.substr(0, i + 1);
+    }
+};
