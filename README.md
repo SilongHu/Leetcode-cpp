@@ -8,3 +8,4 @@ Record the growth of coding
 #Hint Helping: 204,303,198
 #BUG: 6
 #No Runtime Record: 389,20
+public function written: 380
