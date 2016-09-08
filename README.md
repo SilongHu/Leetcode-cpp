@@ -9,3 +9,4 @@ Record the growth of coding
 #BUG: 6
 #No Runtime Record: 389,20
 public function written: 380
+more fun: 268
