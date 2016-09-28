@@ -5,7 +5,7 @@ Record the growth of coding
 #Extremely slow: 7
 #Extremely good: 9,223,28,58,27
 #Code Need trim: 67
-#Hint Helping: 204,303,198,289,287,238,62
+#Hint Helping: 204,303,198,289,287,238,62,39
 #BUG: 6
 #No Runtime Record: 389,20
 public function written: 380
