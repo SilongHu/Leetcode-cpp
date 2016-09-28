@@ -1,0 +1,25 @@
+class Solution {
+public:
+    void combination(const vector<int>& candidates, int target, vector<vector<int>>& rs, vector<int>& set,int pos){
+        if (target == 0){
+            rs.push_back(set);
+            return ;
+        }
+        if (target < 0 || pos >= candidates.size()) return;
+        if (candidates[pos] > target) return; //short circuit because this value can't possibily be the solution
+        
+        set.push_back(candidates[pos]);
+        combination(candidates,target-candidates[pos],rs,set,pos); // dont increment pos, because including this
+        set.pop_back(); // remove element
+        combination(candidates,target,rs,set,pos+1); // increment pos since we are exlucding this
+    }
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        
+        vector<vector<int>> rs; // return set
+        sort(candidates.begin(),candidates.end()); // sort first
+        vector<int> temp;
+        combination(candidates,target,rs,temp,0);
+        return rs;
+        
+    }
+};
