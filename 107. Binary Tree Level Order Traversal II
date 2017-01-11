@@ -1,0 +1,30 @@
+class Solution {
+public:
+    vector<vector<int>> levelOrderBottom(TreeNode* root) {
+        vector<vector<int>> whole;
+        vector<int> level;
+        if (root == NULL) return whole;
+        else {level.push_back(root->val);whole.push_back(level);}
+        
+        queue<TreeNode *> que;
+        que.push(root);
+        int count;
+        TreeNode *left, *right;
+        while(que.empty() == false){
+            vector<int> lev;
+            count = que.size();
+            for(int i = 0; i < count; i++){
+            
+                left = que.front()->left;
+                if(left) {lev.push_back(left->val);que.push(left);}
+                
+                right = que.front()->right;
+                if(right) {lev.push_back(right->val);que.push(right);}
+                
+                que.pop();
+            }
+            if (lev.size() != 0)  whole.insert(whole.begin(),lev);
+        }
+        return whole;
+    }
+};
